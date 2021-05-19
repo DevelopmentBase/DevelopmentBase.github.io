@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Gallery</title>
+        <style type="text/css">
+            /* The grid: Four equal columns that floats next to each other */
+            .column {
+            /*float: left;*/
+            width: 25%;
+            padding: 10px;
+            }
+
+            /* Style the images inside the grid */
+            .column img {
+            opacity: 0.8;
+            cursor: pointer;
+            max-width: 50%;
+            }
+
+            .column img:hover {
+            opacity: 1;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+
+            /* The expanding image container (positioning is needed to position the close button and the text) */
+            .container {
+            position: relative;
+            display: none;
+            }
+
+            /* Expanding image text */
+            #imgtext {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: white;
+            font-size: 20px;
+            }
+
+            /* Closable button inside the image */
+            .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+            }
+        </style>
+        <script type="text/javascript">
+            function myFunction(imgs) {
+            // Get the expanded image
+            var expandImg = document.getElementById("expandedImg");
+            // Get the image text
+            var imgText = document.getElementById("imgtext");
+            // Use the same src in the expanded image as the image being clicked on from the grid
+            expandImg.src = imgs.src;
+            // Use the value of the alt attribute of the clickable image as text inside the expanded image
+            imgText.innerHTML = imgs.alt;
+            // Show the container element (hidden with CSS)
+            expandImg.parentElement.style.display = "block";
+            }
+        </script>
+    </head>
+    <body>
+        <!-- The grid: four columns -->
+<div class="row">
+    <div class="column">
+      <img src="../Images/n1.jpg" alt="Universe1" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="../Images/n2.jpg" alt="Universe2" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+        <img src="../Images/n3.jpg" alt="Universe3" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+        <img src="../Images/n4.jpg" alt="Universe4" onclick="myFunction(this);">
+      </div>
+  </div>
+  
+  <!-- The expanding image container -->
+  <div class="container">
+    <!-- Close the image -->
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  
+    <!-- Expanded image -->
+    <img id="expandedImg" style="width:75%">
+  
+    <!-- Image text -->
+    <div id="imgtext"></div>
+  </div>
+    </body>
+</html>
